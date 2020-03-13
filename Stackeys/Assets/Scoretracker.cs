@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class ScoreTracker : MonoBehaviour
 {
-public class ScoreTracker INSTANCE;
-public int bestscore = 0;
+    public  ScoreTracker INSTANCE;
+    public int bestscore = 0;
     // Start is called before the first frame update
     void Start()
     {
-        
+
+        if (INSTANCE == null)
+        {
+            INSTANCE = this;
+            bestscore = 0;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
